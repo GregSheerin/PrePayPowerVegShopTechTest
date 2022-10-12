@@ -1,0 +1,34 @@
+The exercise to be carried out consists of setting up a vegetable shop. The store will have a series of 
+products.
+Each product will have a price. For example:
+Tomatoes 0.75€
+Aubergines 0.9€
+Carrots 1€
+You can add offers for each product. Continuing with the previous example:
+Buy 3 Aubergines and pay 2.
+Get a free Aubergine for every 2 Tomatoes you buy.
+For every 4€ spent on Tomatoes, we will deduct one euro from your final invoice.
+The input of the application must be:
+-A file where the products and prices are specified similar to
+PRODUCT,PRICE
+Tomato,0.75
+Aubergine,0.9
+Carrot,1
+-A file describing a purchase, of the style
+PRODUCT,QUANTITY
+Tomato,3
+Aubergine,25
+Carrot,12
+The output must be a receipt with:
+The total price, the list of products purchased, the offers applied. It can be in a file or outputted on a 
+console.
+You have maximum 2 days to perform the exercise from the moment you receive it by mail.
+The code files should be placed on the folder (shared link).
+Anything to be assumed must be commented on the code or in a readme file.
+The programming language should be C#.
+We expect you to create Unit tests that will validate the business logic.
+The quality, scalability and organisation of the solution will be key aspects during the evaluation 
+process.
+The quality of the structure will be valued more than the total completeness of the exercise and its 
+functionality.
+Good luck!
