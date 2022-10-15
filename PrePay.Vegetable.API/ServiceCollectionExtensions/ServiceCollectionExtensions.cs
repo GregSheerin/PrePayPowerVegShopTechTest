@@ -1,11 +1,11 @@
-﻿using System.IO.Abstractions;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using PrePay.VegetableShop.Models;
 using PrePay.VegetableShop.Data.Context;
 using PrePay.VegetableShop.Data.CsvParser;
-using PrePay.VegetableShop.Domain.Services.ProductService;
 using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using PrePay.VegetableShop.Domain.Services.ProductService;
+using PrePay.VegetableShop.Models;
+using System.IO.Abstractions;
 
 namespace PrePay.VegetableShop.API.ServiceCollectionExtensions
 {

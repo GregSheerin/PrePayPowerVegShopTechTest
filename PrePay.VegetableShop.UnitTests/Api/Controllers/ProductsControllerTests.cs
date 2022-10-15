@@ -1,17 +1,16 @@
-﻿using System.Net;
-using System.Linq;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.AspNetCore.Mvc;
-using Moq;
-using Xunit;
-using AutoBogus;
+﻿using AutoBogus;
 using FluentAssertions;
 using Microsoft.AspNetCore.Http;
-using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using Microsoft.AspNetCore.Mvc;
+using Moq;
 using PrePay.VegetableShop.API.Controllers;
 using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using PrePay.VegetableShop.Models;
+using System.Collections.Generic;
+using System.IO;
+using System.Net;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Api.Controllers
 {

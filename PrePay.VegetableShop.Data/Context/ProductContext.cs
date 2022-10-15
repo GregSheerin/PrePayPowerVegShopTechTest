@@ -1,12 +1,11 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
 using System.Reflection;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Data.CsvParser;
 
 namespace PrePay.VegetableShop.Data.Context
 {

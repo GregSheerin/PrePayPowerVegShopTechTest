@@ -1,15 +1,15 @@
-﻿using System.IO;
-using System.IO.Abstractions;
-using System.Collections.Generic;
+﻿using FluentAssertions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
 using Moq;
-using Xunit;
-using FluentAssertions;
-using PrePay.VegetableShop.Models;
 using PrePay.VegetableShop.Data.Context;
 using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Models;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Abstractions;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Data.Context
 {
@@ -101,7 +101,7 @@ namespace PrePay.VegetableShop.UnitTests.Data.Context
         {
             //Act
             var result = await _sut.GetProduct(1).ConfigureAwait(false);
-            
+
             //Assert
             result.Should().BeNull();
         }

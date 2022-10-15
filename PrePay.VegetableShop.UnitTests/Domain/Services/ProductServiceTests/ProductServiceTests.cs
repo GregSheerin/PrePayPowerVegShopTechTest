@@ -1,10 +1,10 @@
-﻿using Moq;
-using Xunit;
-using AutoBogus;
+﻿using AutoBogus;
 using FluentAssertions;
+using Moq;
 using PrePay.VegetableShop.Data.Context;
 using PrePay.VegetableShop.Domain.Services.ProductService;
 using PrePay.VegetableShop.Models;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Domain.Services.ProductServiceTests
 {

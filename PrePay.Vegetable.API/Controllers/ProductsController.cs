@@ -1,10 +1,10 @@
-﻿using System.IO;
+﻿using Microsoft.AspNetCore.Mvc;
+using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using PrePay.VegetableShop.Models;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using PrePay.VegetableShop.Data.CsvParser;
-using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Domain.Services.CheckoutService;
 
 namespace PrePay.VegetableShop.API.Controllers
 {

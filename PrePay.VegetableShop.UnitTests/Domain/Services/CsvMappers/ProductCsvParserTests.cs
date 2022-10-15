@@ -1,10 +1,10 @@
-﻿using System.IO;
-using System.Linq;
+﻿using FluentAssertions;
 using Microsoft.VisualStudio.TestPlatform.TestHost;
-using Xunit;
-using FluentAssertions;
 using PrePay.VegetableShop.Data.CsvParser;
 using PrePay.VegetableShop.Models;
+using System.IO;
+using System.Linq;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Domain.Services.CsvMappers
 {

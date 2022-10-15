@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using PrePay.VegetableShop.Models;
+using System.Collections.Generic;
 using System.Threading.Tasks;
-using PrePay.VegetableShop.Models;
 
 namespace PrePay.VegetableShop.Domain.Services.ProductService
 {

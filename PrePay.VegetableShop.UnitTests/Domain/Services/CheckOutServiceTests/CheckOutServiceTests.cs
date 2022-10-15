@@ -1,11 +1,11 @@
-﻿using System.Linq;
-using System.Collections.Generic;
+﻿using FluentAssertions;
 using Moq;
-using Xunit;
-using FluentAssertions;
-using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Domain.Services.ProductService;
 using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using PrePay.VegetableShop.Domain.Services.ProductService;
+using PrePay.VegetableShop.Models;
+using System.Collections.Generic;
+using System.Linq;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Domain.Services.CheckOutServiceTests
 {

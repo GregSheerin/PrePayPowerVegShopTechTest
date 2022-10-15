@@ -1,22 +1,18 @@
-﻿using System;
+﻿using FluentAssertions;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.VisualStudio.TestPlatform.TestHost;
+using Moq;
+using PrePay.VegetableShop.API.ServiceCollectionExtensions;
+using PrePay.VegetableShop.Data.Context;
+using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Domain.Services.CheckoutService;
+using PrePay.VegetableShop.Domain.Services.ProductService;
+using PrePay.VegetableShop.Models;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Abstractions;
-using System.IO.Abstractions.TestingHelpers;
-using Moq;
-using Xunit;
-using Microsoft.Extensions.DependencyInjection;
 using System.Linq;
-using System.Reflection;
-using AutoBogus;
-using FluentAssertions;
-using Microsoft.VisualStudio.TestPlatform.TestHost;
-using PrePay.VegetableShop.API.ServiceCollectionExtensions;
-using PrePay.VegetableShop.Domain.Services.CheckoutService;
-using PrePay.VegetableShop.Data.Context;
-using PrePay.VegetableShop.Data.CsvParser;
-using PrePay.VegetableShop.Domain.Services.ProductService;
-using PrePay.VegetableShop.Models;
+using Xunit;
 
 namespace PrePay.VegetableShop.UnitTests.Api.ServiceCollectionExtensions
 {

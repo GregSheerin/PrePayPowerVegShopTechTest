@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using System.Collections.Generic;
+﻿using PrePay.VegetableShop.Data.Context;
 using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Data.Context;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace PrePay.VegetableShop.Domain.Services.ProductService
 {

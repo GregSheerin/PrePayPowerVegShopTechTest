@@ -1,14 +1,14 @@
-using System.Net;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
+using CsvHelper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using CsvHelper;
+using Microsoft.Extensions.Hosting;
 using PrePay.VegetableShop.API.ServiceCollectionExtensions;
+using System.Net;
 
 namespace PrePay.VegetableShop.API
 {

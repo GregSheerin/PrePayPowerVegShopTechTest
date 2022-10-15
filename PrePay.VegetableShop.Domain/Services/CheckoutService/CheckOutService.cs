@@ -1,9 +1,9 @@
-﻿using System;
+﻿using PrePay.VegetableShop.Domain.Services.ProductService;
+using PrePay.VegetableShop.Models;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using PrePay.VegetableShop.Models;
-using PrePay.VegetableShop.Domain.Services.ProductService;
 
 namespace PrePay.VegetableShop.Domain.Services.CheckoutService
 {
