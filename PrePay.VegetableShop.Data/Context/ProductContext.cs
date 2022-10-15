@@ -1,19 +1,48 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.IO.Abstractions;
+using System.Reflection;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using PrePay.VegetableShop.Models;
+using PrePay.VegetableShop.Data.CsvParser;
 
 namespace PrePay.VegetableShop.Data.Context
 {
     public class ProductContext : DbContext, IProductContext
     {
-        public ProductContext(DbContextOptions options) : base(options)
+        private readonly ICsvParser<Product> _csvParser;
+        private readonly IFileSystem _fileSystem;
+        public ProductContext(ICsvParser<Product> csvParser, DbContextOptions<ProductContext>
+            options, IFileSystem fileSystem) : base(options)
         {
+            _csvParser = csvParser;
+            _fileSystem = fileSystem;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        private DbSet<Product> Products { get; set; }
+
+        public async Task<Product> GetProduct(int productId)
         {
-            optionsBuilder.UseInMemoryDatabase(databaseName: "ProductsDB");
+            return await Products.FirstOrDefaultAsync(x => (int)x.ProductName == productId);
         }
 
-        public DbSet<Product> Products { get; set; }
+        public async Task<List<Product>> GetProducts()
+        {
+            return await Products.ToListAsync();
+        }
+
+        public void SetProducts()
+        {
+            //TODO : Move this somewhere a bit more senseable, just need to load the data once
+            var path = $"{_fileSystem.Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location)}\\ProductData.Csv";
+
+            using var streamReader = new StreamReader(path);
+            var products = _csvParser.ParseCsv(streamReader).Result;
+
+            Products.AddRange(products);
+            SaveChanges();
+        }
     }
 }

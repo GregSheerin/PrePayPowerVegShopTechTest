@@ -1,27 +1,27 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using PrePay.VegetableShop.Data.UnitOfWork;
+﻿using System.Threading.Tasks;
+using System.Collections.Generic;
 using PrePay.VegetableShop.Models;
+using PrePay.VegetableShop.Data.Context;
 
-namespace PrePay.VegetableShop.Domain.Services.ProductsService
+namespace PrePay.VegetableShop.Domain.Services.ProductService
 {
     public class ProductService : IProductService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IProductContext _productContext;
 
-        public ProductService(IUnitOfWork unitOfWork)
+        public ProductService(IProductContext productContext)
         {
-            _unitOfWork = unitOfWork;
+            _productContext = productContext;
         }
 
-        public async Task<Product> GetProduct(string productName)
+        public async Task<Product> GetProduct(int productId)
         {
-            return await _unitOfWork.Products.GetProduct(productName);
+            return await _productContext.GetProduct(productId);
         }
 
         public async Task<List<Product>> GetProducts()
         {
-            return await _unitOfWork.Products.GetProducts();
+            return await _productContext.GetProducts();
         }
     }
 }

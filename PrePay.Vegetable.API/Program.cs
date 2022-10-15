@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace PrePay.Vegetable.API
+namespace PrePay.VegetableShop.API
 {
     public class Program
     {

@@ -1,33 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using PrePay.VegetableShop.Domain.Services.CheckoutService;
-using PrePay.VegetableShop.Models;
-using System.Collections.Generic;
+﻿using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using PrePay.VegetableShop.Data.CsvParser;
+using PrePay.VegetableShop.Models;
+using PrePay.VegetableShop.Domain.Services.CheckoutService;
 
-namespace PrePay.Vegetable.API.Controllers
+namespace PrePay.VegetableShop.API.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductsController : Controller
     {
         private readonly ICheckOutService _checkOutService;
+        private readonly ICsvParser<ProductOrder> _csvParser;
 
-        public ProductsController(ICheckOutService checkOutService)
+        public ProductsController(ICheckOutService checkOutService, ICsvParser<ProductOrder> csvParser)
         {
             _checkOutService = checkOutService;
+            _csvParser = csvParser;
         }
 
-        [HttpPost()]
-        public async Task<ActionResult<CheckOut>> CheckOutOrder(List<Product> products) //TODO: Add parsers for csv to handle a list of products
+        [HttpPost("{csvData}")]
+        public async Task<ActionResult<CheckOut>> CheckOutOrder([FromBody] string body)
         {
-            if (!products.Any())
+            //Rewind the body stream back, avoid a null string coming in
+            HttpContext.Request.Body.Seek(0, SeekOrigin.Begin);
+
+            //Grab the stream of the csv out
+            using var stream = new StreamReader(HttpContext.Request.Body);
+
+            //parse the order
+            var productOrder = await _csvParser.ParseCsv(stream).ConfigureAwait(false);
+
+
+            if (productOrder == null || !productOrder.Any())
             {
-                return BadRequest("Error:No Products to checkout"); //TODO : Better error handling,middleware might be an idea for this kinda of project layout
+                return BadRequest("No Product Data");
             }
 
-            var checkOutRecipt = await _checkOutService.CheckOutProducts(products);
-            return Ok(new Product()); //TODO : Implement Get By ID
+            var checkOutReceipt = await _checkOutService.CheckOutProducts(productOrder).ConfigureAwait(false);
+
+            return Ok(checkOutReceipt);
         }
     }
 }

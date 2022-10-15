@@ -6,6 +6,6 @@ namespace PrePay.VegetableShop.Domain.Services.CheckoutService
 {
     public interface ICheckOutService
     {
-        public Task<CheckOut> CheckOutProducts(List<Product> products);
+        public Task<CheckOut> CheckOutProducts(List<ProductOrder> products);
     }
 }

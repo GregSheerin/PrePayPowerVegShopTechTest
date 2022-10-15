@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+    <PackageReference Include="Sylvan.AspNetCore.Mvc.Formatters.Csv" Version="0.2.0" />
   </ItemGroup>
 
   <ItemGroup>

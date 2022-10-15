@@ -1,9 +1,11 @@
-﻿namespace PrePay.VegetableShop.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PrePay.VegetableShop.Models
 {
     public class Product
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public ProductEnum ProductName { get; set; } //TODO : Rename this, not a name really
         public float Price { get; set; }
     }
 }

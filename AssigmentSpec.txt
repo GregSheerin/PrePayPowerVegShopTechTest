@@ -4,10 +4,14 @@ Each product will have a price. For example:
 Tomatoes 0.75€
 Aubergines 0.9€
 Carrots 1€
+
+
 You can add offers for each product. Continuing with the previous example:
 Buy 3 Aubergines and pay 2.
 Get a free Aubergine for every 2 Tomatoes you buy.
 For every 4€ spent on Tomatoes, we will deduct one euro from your final invoice.
+
+
 The input of the application must be:
 -A file where the products and prices are specified similar to
 PRODUCT,PRICE
