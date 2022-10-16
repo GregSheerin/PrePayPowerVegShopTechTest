@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using Xunit;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace PrePay.VegetableShop.UnitTests.Api.Controllers
 {
@@ -59,7 +61,7 @@ namespace PrePay.VegetableShop.UnitTests.Api.Controllers
             _csvParser.Setup(x => x.ParseCsv(streamReader)).ReturnsAsync((List<ProductOrder>)null);
 
             //Act
-            var res = await _sut.CheckOutOrder(null).ConfigureAwait(false);
+            var res = await _sut.CheckOutOrder().ConfigureAwait(false);
 
             //Assert
             res.Should().NotBeNull();
@@ -82,7 +84,7 @@ namespace PrePay.VegetableShop.UnitTests.Api.Controllers
             _csvParser.Setup(x => x.ParseCsv(streamReader)).ReturnsAsync(emptyProdList);
 
             //Act
-            var res = await _sut.CheckOutOrder(null).ConfigureAwait(false);
+            var res = await _sut.CheckOutOrder().ConfigureAwait(false);
 
             //Assert
             res.Should().NotBeNull();
@@ -104,17 +106,17 @@ namespace PrePay.VegetableShop.UnitTests.Api.Controllers
             var productOrders = AutoFaker.Generate<ProductOrder>(2);
             _csvParser.Setup(x => x.ParseCsv(It.IsAny<StreamReader>())).ReturnsAsync(productOrders);
 
-            var checkOut = AutoFaker.Generate<CheckOut>();
-            _checkOutService.Setup(x => x.CheckOutProducts(productOrders)).ReturnsAsync(checkOut);
+            var orderReceipt = AutoFaker.Generate<OrderReceipt>();
+            _checkOutService.Setup(x => x.CheckOutProducts(productOrders)).ReturnsAsync(orderReceipt);
 
             //Act
-            var res = await _sut.CheckOutOrder(null).ConfigureAwait(false);
+            var res = await _sut.CheckOutOrder().ConfigureAwait(false);
 
             //Assert
             res.Should().NotBeNull();
-            var okObjectResult = (OkObjectResult)res.Result;
-            okObjectResult.StatusCode.Should().Be((int)HttpStatusCode.OK);
-            okObjectResult.Value.Should().Be(checkOut);
+            var jsonResult = (JsonResult)res.Result;
+            jsonResult.Value.Should().BeOfType<OrderReceipt>();
+            jsonResult.Value.Should().BeEquivalentTo(orderReceipt);
         }
     }
 }

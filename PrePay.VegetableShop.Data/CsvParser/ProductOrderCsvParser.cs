@@ -11,6 +11,8 @@ namespace PrePay.VegetableShop.Data.CsvParser
 {
     public class ProductOrderCsvParser : ICsvParser<ProductOrder>
     {
+        //Parsers in charge of reading the order
+        //Using CSV helper lib for this, Mapper profile converts the expected header to the correct property on the model
         public async Task<List<ProductOrder>> ParseCsv(StreamReader productStream)
         {
             using var csv = new CsvReader(productStream, CultureInfo.InvariantCulture);

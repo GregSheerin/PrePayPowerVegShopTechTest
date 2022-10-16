@@ -20,18 +20,6 @@ namespace PrePay.VegetableShop.UnitTests.Domain.Services.ProductServiceTests
         }
 
         [Fact]
-        public async void GetProduct_ShouldReturnMatchingProduct()
-        {
-            //Arrange
-            var product = AutoFaker.Generate<Product>();
-            _productContext.Setup(x => x.GetProduct((int)product.ProductName)).ReturnsAsync(product);
-
-            //Act
-            var result = await _sut.GetProduct((int)product.ProductName).ConfigureAwait(false);
-            result.Should().Be(product);
-        }
-
-        [Fact]
         public async void GetProducts_ShouldReturnAllProducts()
         {
             //Arrange

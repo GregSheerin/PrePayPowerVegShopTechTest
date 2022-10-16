@@ -46,13 +46,15 @@ namespace PrePay.VegetableShop.API
                 app.UseSwagger();
                 app.UseSwaggerUI();
 
-                //TODO : seperate into its own class
+                //This should be moved out to another class, ideally a collection of middleware would be added, each handling a different exception and returning
+                // a valid response to the user, this is just to inform the user that there data is bad
                 app.UseExceptionHandler(c => c.Run(async context =>
                 {
                     var ex = context.Features
                         .Get<IExceptionHandlerPathFeature>()
                         .Error;
-
+                    //CSV helper will throw this error when it has an issue, beacuse of the way the products are set up with enums
+                    //We can use this as a way to say to the user that what they passed isnt valid, IE if I pass apple as a product, it would be able to convert, thus the user data is bad
                     if (ex.GetType() == typeof(CsvHelperException))
                     {
                         context.Response.StatusCode = (int)HttpStatusCode.BadRequest;

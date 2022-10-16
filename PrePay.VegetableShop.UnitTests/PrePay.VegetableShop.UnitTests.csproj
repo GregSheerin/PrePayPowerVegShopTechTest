@@ -28,6 +28,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PrePay.Vegetable.API\PrePay.VegetableShop.API.csproj" />
+    <ProjectReference Include="..\PrePay.VegetableShop.Domain\PrePay.VegetableShop.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>

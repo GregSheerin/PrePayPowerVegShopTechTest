@@ -7,16 +7,15 @@ namespace PrePay.VegetableShop.Domain.Services.ProductService
 {
     public class ProductService : IProductService
     {
+        //I use an Interface over the context here, One it means that the database impletation doesnt affect the flow of the app
+        //And it makes testings a lot simplier
+        //For the operations(just), i stuck purely to what was needed for the assignment.
+        //If we need more read/write/get style implentation, they would be implented here(Assuming a unit of work pattern+repoistry isnt added in)
         private readonly IProductContext _productContext;
 
         public ProductService(IProductContext productContext)
         {
             _productContext = productContext;
-        }
-
-        public async Task<Product> GetProduct(int productId)
-        {
-            return await _productContext.GetProduct(productId);
         }
 
         public async Task<List<Product>> GetProducts()

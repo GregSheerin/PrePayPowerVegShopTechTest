@@ -11,7 +11,8 @@ namespace PrePay.VegetableShop.Data.CsvParser
 {
     public class ProductCsvParser : ICsvParser<Product>
     {
-        //Can assume that the system data is safe from error, but should put something simliar in there
+       //Parsers in charge of reading the inital data file
+       //Using CSV helper lib for this, Mapper profile converts the expected header to the correct property on the model
         public async Task<List<Product>> ParseCsv(StreamReader productStream)
         {
             using var csv = new CsvReader(productStream, CultureInfo.InvariantCulture);

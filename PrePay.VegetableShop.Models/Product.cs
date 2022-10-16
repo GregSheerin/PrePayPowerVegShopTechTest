@@ -5,7 +5,7 @@ namespace PrePay.VegetableShop.Models
     public class Product
     {
         [Key]
-        public ProductEnum ProductName { get; set; } //TODO : Rename this, not a name really
+        public ProductEnum ProductName { get; set; }
         public float Price { get; set; }
     }
 }

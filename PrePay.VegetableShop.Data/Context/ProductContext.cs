@@ -34,7 +34,10 @@ namespace PrePay.VegetableShop.Data.Context
 
         public void SetProducts()
         {
-            //TODO : Move this somewhere a bit more senseable, just need to load the data once
+            //This method would be removed if a real database would be used
+            //The idea being using the in memeory database was just simplicty, I wanted to use entity framework for data handling
+            //And keep it extendable, so using the in memeory database made sense, also I didnt want to have to get the person
+            //Reading this to set up a database and run migrations. See data handling section in readme
             var path = $"{_fileSystem.Path.GetDirectoryName(Assembly.GetEntryAssembly()?.Location)}\\ProductData.Csv";
 
             using var streamReader = new StreamReader(path);
